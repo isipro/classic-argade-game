@@ -96,8 +96,10 @@ var Engine = (function(global) {
             //setTimeout(enemy.update(dt), 2500)               
             // setInterval(function(){enemy.update(dt)}, 1000);
 
-            waitTime += 1500;
+            // Setting a wait time for the Time Out so the bugs start in different timing
+            // TODO: refactor as this slows down the program using too many time out functions simultaneously.
 
+            waitTime += 1500;            
             setTimeout(function(){enemy.update(dt)}, waitTime);
             
         });
