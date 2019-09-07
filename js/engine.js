@@ -46,6 +46,7 @@ var Engine = (function(global) {
          */
         update(dt);
         render();
+        
 
         /* Set our lastTime variable which is used to determine the time delta
          * for the next time this function is called.
@@ -79,7 +80,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -89,13 +90,13 @@ var Engine = (function(global) {
      * the data/properties related to the object. Do your drawing in your
      * render methods.
      */
+
+    var allEnemies = reloadAllEnemies();
+
     function updateEntities(dt) {
         var waitTime = 500;
         allEnemies.forEach(function(enemy) {
             
-            //setTimeout(enemy.update(dt), 2500)               
-            // setInterval(function(){enemy.update(dt)}, 1000);
-
             // Setting a wait time for the Time Out so the bugs start in different timing
             // TODO: refactor as this slows down the program using too many time out functions simultaneously.
 
@@ -172,7 +173,25 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
+        //renderEntities();
+        player.reset();
     }
+
+
+    function checkCollisions(){
+
+        for(let enemy of allEnemies){
+            if (player.x < enemy.x + enemy.width  && player.x + player.width  > enemy.x &&
+                player.y < enemy.y + enemy.height && player.y + player.height > enemy.y) {
+            // The objects are touching
+            console.log("collision detected");
+            reset();
+            }
+        }
+      
+        
+    }
+
 
     /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when
@@ -193,3 +212,9 @@ var Engine = (function(global) {
      */
     global.ctx = ctx;
 })(this);
+
+
+//TODO: 
+//  Question How is this Engine ( GLobal ) object being accessed from the other file 
+//trying to call init() to reset the game
+//  Question: how is the game loop happening? 
