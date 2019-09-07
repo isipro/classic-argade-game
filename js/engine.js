@@ -90,8 +90,16 @@ var Engine = (function(global) {
      * render methods.
      */
     function updateEntities(dt) {
+        var waitTime = 500;
         allEnemies.forEach(function(enemy) {
-            enemy.update(dt);
+            
+            //setTimeout(enemy.update(dt), 2500)               
+            // setInterval(function(){enemy.update(dt)}, 1000);
+
+            waitTime += 1500;
+
+            setTimeout(function(){enemy.update(dt)}, waitTime);
+            
         });
         player.update();
     }
