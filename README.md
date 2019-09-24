@@ -18,3 +18,16 @@ For detailed instructions on how to get started, check out this [guide](https://
 ## Contributing
 
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+
+## How to run the game
+
+1. open the game folder and click on the index.html
+this will open a browser and load the game
+2. alternatively, you can host the game on a local or a remove web server
+load the game via opening the domain name
+
+## How to play the game
+
+1. move the player upwards in order to reach the water
+2. you can move the player left and right, or up and down by pressing the arrow keys
+3. the game is won if the water is reached.

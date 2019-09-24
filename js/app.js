@@ -31,7 +31,6 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-
 var Player = function(){
     this.sprite = 'images/char-boy.png';
 
@@ -42,6 +41,7 @@ var Player = function(){
     this.height = 60;
 
 }
+
 Player.prototype.update = function(dt){
 
 }
@@ -91,7 +91,7 @@ var enemySpeeds = {
     superFast: 5
 }
 
-
+//Populates the allEnemies array with all the bugs giving them different position rows and different speeds
 function reloadAllEnemies(){
     var allEnemies = [];
     for (let i = 1; i < 210; i++) {
@@ -124,7 +124,7 @@ document.addEventListener('keyup', function(e) {
 });
 
 
-//Checks if the player has reached the water
+//Checks if the player has reached the water to win the game
 //TODO: consider moving this to engine.js and check on every update
 function checkIfWon(){
     if (player.y < 20 ){
@@ -138,7 +138,6 @@ function checkIfWon(){
                 reloadAllEnemies();
 
             }
-            , 1000);
-               
+            , 1000);               
     }
 }
